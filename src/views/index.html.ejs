@@ -1,0 +1,36 @@
+<div class="borderlessFull">
+
+
+
+  <div class="borderlessRow">
+    <div class="banner">
+      <p>Intercambiamos?</p>
+    </div>
+    <div class="row">
+      <div class="box1 title">
+        <h1>Recientes</h1>
+      </div>
+      <div class="row">
+        <% publications.forEach(publication => { %>
+        <div class="box1">
+          <div class="prodCard" onclick="window.location='/publications/<%= publication.id%>'">
+            <div class="box1" id="index-publication-picture">
+              <img src="<%= getPicturePath(publication) %>" alt="">
+            </div>
+            <div class="row">
+              <h3>
+                <%= publication.title %>
+              </h3>
+              <p class="tipoProd">
+                <%= (publication.exchange_type == 'gift')? "Regalo" : "Intercambio" %>
+              </p>
+            </div>
+            <p class="precio">$
+              <%= publication.value %>
+            </p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
+    </div>

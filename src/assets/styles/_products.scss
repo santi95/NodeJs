@@ -1,0 +1,33 @@
+.prodCard{
+    // border: solid $background 1px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    img{
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15px;
+    }
+}
+
+.tipoProd{
+    margin-left: auto;
+}
+
+.precio{
+    margin-top: 0px;
+    margin-left: 1em;
+}
+
+.text-align-right{
+    margin-left: auto;
+}
+
+

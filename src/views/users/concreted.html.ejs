@@ -1,0 +1,51 @@
+<h1>Intercambios y Regalos concretados</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Publicación</th>
+      <th>Usuario</th>
+      <th>Descripcion</th>
+      <th>Tipo</th>
+      <th>Fecha</th>
+      <th>Evaluación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% concreted.forEach (bid => { %>
+      <tr>
+        <td>
+            <% publications.forEach(publication => { %>
+            <% if (publication.id == bid.publicationId) { %>
+            <%= publication.title %>
+            <% } %>
+            <% }) %>
+        </td>
+        <td>
+            <% users.forEach(u => { %>
+                <% if (user.id == bid.bidderId && u.id == bid.receiverId) { %>
+                    <%= u.firstName + ' ' + u.lastName %>
+                <% } else if (user.id == bid.receiverId && u.id == bid.bidderId) { %>
+                    <%= u.firstName + ' ' + u.lastName %>
+                <% } %>
+            <% }) %>
+        </td>
+        <td><%= bid.description %></td>
+        <td>
+            <% publications.forEach(publication => { %>
+            <% if (publication.id == bid.publicationId) { %>
+            <%= publication.exchange_type %>
+            <% } %>
+            <% }) %>
+        </td>
+        <td><%= bid.createdAt.toLocaleDateString("en-US") %></td>
+        <td>
+            <% if (bid.reviewId) { %>
+                Evaluado
+            <% } else {%>
+                <a href=<%= getNewReviewPath(bid) %> class="defaultButtonSmaller">Evaluar</a>
+            <% } %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

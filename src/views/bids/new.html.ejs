@@ -1,0 +1,32 @@
+<div class="Full">
+  <div class="container2">
+    <div class="cardTable addForm">
+  <div class="title">
+    <h1>Ofertar</h1>      
+  </div>
+      <form action="<%= submitPath %>" method="post">
+
+        <input type="hidden" id="bidderId" name="bidderId" value=<%= currentUser.id %>>
+        <input type="hidden" id="receiverId" name="receiverId" value=<%= receiver_user.id %>>
+        <input type="hidden" id="publicationId" name="publicationId" value=<%= publication.id %>>
+
+        <% if (error) { %>
+          <p class="error"> Debes escribir al menos 1 caracter </p>
+        <% } %>
+        <div class="row">
+
+          <label for="description">
+            <span>Descripción de oferta</span>
+            <br>
+            <textarea placeholder = "Describe tu oferta aquí" rows="5" cols="50" type="text" name="description" id="description" ></textarea>
+          </label>
+        </div>
+
+
+        <div class="actions">
+          <input class= "defaultButton" type="submit" value="Ofertar" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

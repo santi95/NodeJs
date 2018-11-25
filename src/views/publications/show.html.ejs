@@ -1,0 +1,80 @@
+<div class="Full">
+  <div class="container">
+    <div class="cardTable">
+      <div id="publication">
+        <div class="row">
+          <div class="box1 borderR" id="show-publication-picture">
+            <div id="image" path="<%= publicationPicturePath %>"></div>
+          </div>
+          <div class="box2 ml-5">
+            <h1 class="borderB">
+              <%= publication.title %>
+            </h1>
+            <div class="row">
+              <p>Descripción: <br>
+                <%= publication.description %>
+              </p>
+            </div>
+            <div class="row">
+              <p>Precio:
+                <%= publication.value %>
+              </p>
+              <p class="text-align-right">Tipo de cambio:
+                <%= publication.exchange_type%>
+              </p>
+            </div>
+            <div class="row content-center">
+              <!-- Son los botones -->
+
+              <% if (locals.currentUser) { %>
+              <% if (currentUser.id !== publication.userId) { %>
+              <div class="box1">
+                <a href='<%= newBidPath %>'>
+                  <button class="defaultButton">Ofertar</button>
+                </a>
+              </div>
+              <%} else if(currentUser.id === publication.userId || currentUser.role === 'admin') { %>
+              <div class="box1">
+                <a href='<%= publicationBidsPath %>'>
+                  <button class="defaultButton">Ver Ofertas(
+                    <%= bidsCount %>)</button>
+                </a>
+              </div>
+              <div class="box1">
+                <a href='<%= publicationEditPath %>'>
+                  <button class="defaultButton">Editar</button>
+                </a>
+              </div>
+              <div class="box1">
+                <form action='<%= publicationDeletePath %>' method="post">
+                  <input type="hidden" name="_method" value="delete" />
+                  <button type='submit' class="defaultButton">Eliminar</button>
+                </form>
+              </div>
+              <%} %>
+              <%} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="cardTable">
+      <div class="row">
+        <h3>Comentarios</h3>
+      </div>
+      <div class="line"></div>
+
+      <% if (locals.currentUser){ %>
+      <div id="comments" data-id="<%= publication.id %>" data-logIn="<%= currentUser.id %>">
+        Renderear Comments
+      </div>
+      <% } else{ %>
+      <div id="comments" data-id="<%= publication.id %>" data-logIn="<%= null %>">
+        <% }%>
+
+      </div>
+    </div>
+  </div>
+</div>

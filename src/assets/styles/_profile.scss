@@ -1,0 +1,151 @@
+#user{
+    flex: 1;
+    border: solid $background;
+    margin: 20px;
+    vertical-align: middle;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+}
+
+.profileBoxes{
+    display: flex;
+    justify-content: center;
+}
+
+.profileBox{
+    flex: 1;
+    border: solid $background;
+    margin: 20px;
+    margin-top: 0;
+    text-align: center;
+    vertical-align: middle;
+    max-width: 350px;
+}
+
+.profileBox:hover{
+    background-color: $grey;
+    cursor: pointer;
+}
+
+.defaultButtonSmaller{
+        border-radius: 5px;
+        background-color: $yellow-base;
+        color: $background;
+        font-size: 13px;
+        text-align: center;
+        height: 18px;
+        width: 60px;
+        display: inline-block;
+        text-decoration: none;
+        align-items: flex-start;
+        margin-top: 10px;
+        vertical-align: middle;
+}
+
+.defaultButtonSmaller:hover{
+        background-color: $yellow-hover;
+}
+
+div.profile-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.main-col {
+  position: relative;
+  width: 60%;
+  padding: 2.4%;
+}
+
+.main-row {
+  position: relative;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+#buttons {
+  width: 30%;
+  padding: 2.4%;
+}
+
+.col-direction {
+  flex-direction: column;
+}
+
+div.profile-col {
+  position: relative;
+  width: 50%;
+  p {
+    display: flex;
+    vertical-align: middle;
+    height: 20px;
+  }
+}
+
+div.reviews-col {
+  position: relative;
+  width: 100%;
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+#reviews-summary {
+  margin: auto;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  div {
+    margin-left: 5px;
+    margin-top: 2px;
+    font-size: 15px;
+  }
+}
+
+div.reviews-display {
+  margin: 10px;
+  border: 2px solid $grey;
+  border-radius: 5px;
+  color: $dark-grey;
+  font-family: arial;
+  .title {
+    position: relative;
+    margin: 0;
+    border-bottom: 2px solid $grey;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 15px;
+      color: #606060;
+      border: 0;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    img {
+      margin-left: 5px;
+      height: 15px;
+      width: 15px;
+    }
+    .date {
+      padding: 0;
+      position: absolute;
+      right: 10px;
+    }
+  }
+  .description {
+    margin: auto;
+    padding: 5px;
+  }
+}

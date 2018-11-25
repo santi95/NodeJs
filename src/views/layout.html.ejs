@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Trade In</title>
+  <% if (env !== "development") { %>
+  <link rel="stylesheet" href="<%= assetPath('app.css') %>">
+  <% } %>
+</head>
+
+<body>
+  <div id="menu">
+    <div class="row">
+      <a href="/">
+        <h1 class="logo"> <i class="flaticon-arrows-couple"></i> Trade In</h1>
+      </a>
+      <form id = "searchBar" action="/publications/query" method="get">
+        <input id="query" type="text" name="query" placeholder="Busque Publicaciones Aqui">
+        <input id="buttonSearch" type="submit" value="Buscar">
+      </form>
+    </div>
+
+    <div class="row">
+      <a href="/publications" class="menuitem">Publicaciones</a>
+      <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn"> Categorías </button>
+      <div id="myDropdown" class="dropdown-content">
+        <!-- Aqui deberiamos poner un for sobre las categorias de la base de datos -->
+      <a href="/categories/1">Autos, Motos y Otros</a>
+      <a href="/categories/2">Inmuebles</a>
+      <a href="/categories/3">Servicios</a>
+      <a href="/categories/4">Animales</a>
+      <a href="/categories/5">Cámaras y Accesorios</a>
+      <a href="/categories/6">Celulares</a>
+      <a href="/categories/7">Coleccionables</a>
+      <a href="/categories/8">Deportes</a>
+      <a href="/categories/9">Electrodomésticos</a>
+      <a href="/categories/10">Herramientas y Construcción</a>
+      <a href="/categories/11">Juegos y juguetes</a>
+      <a href="/categories/12">Partes de bicicleta</a>
+      <a href="/categories/13">Otros</a>
+    </div>
+    </div>
+
+      <% if (locals.currentUser) { %>
+      <a class="menuitem menuitemright" href="/users/<%= currentUser.id %>">Bienvenido,
+        <%= currentUser.firstName %></a>
+
+      <form action="<%= destroySessionPath %>" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit" class="menuitem menuitemright">Cerrar Sesión</button>
+      </form>
+
+      <% } else { %>
+      <a class="menuitem menuitemright" href="<%= newSessionPath %>">Iniciar sesión</a>
+      <% } %>
+
+
+    </div>
+  </div>
+  <%- body %>
+  <script src="<%= assetPath('app.js') %>"></script>
+  <script>
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+  </script>
+
+
+</body>
+
+</html>

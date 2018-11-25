@@ -1,0 +1,81 @@
+<div class="Full">
+  <div class="container">
+    <% if (notice) { %>
+      <div class="alert notice"><%= notice %></div>
+    <% } %>
+    <div class="cardTable">
+      <div class="profile-wrapper">
+        <div class="profile-wrapper col-direction main-col">
+          <div class="profile-wrapper main-row borderB">
+            <div class="profile-col" id='picture'>
+              <div class="box1" id="show-publication-picture">
+                <img src="<%= getProfilePicturePath %>" alt="" />
+              </div>
+            </div>
+            <div class="profile-col" id='info'>
+              <h1><%= user.firstName + " " + user.lastName %></h1>
+              <p id="email"><img src="https://image.flaticon.com/icons/svg/34/34400.svg"><%= user.email %></p>
+              <p id="location"><img src="https://image.flaticon.com/icons/svg/34/34250.svg"><%= user.location %></p>
+            </div>
+          </div>
+          <div class="reviews-col">
+            <h2>Opiniones de otros usuarios</h2>
+            <div class="reviews-wrapper">
+              <div id="reviews-summary"">
+                <%= user.reputation %>
+                <div class="flex col-direction">
+                  <div><img src="https://image.flaticon.com/icons/svg/25/25297.svg"><%= up %></div>
+                  <div><img src="https://image.flaticon.com/icons/svg/25/25237.svg"><%= down %></div>
+                </div>
+              </div>
+              <% reviews.forEach(review => { %>
+                <div class="reviews-display">
+                  <div class="title">
+                    <% if (review.score === 1) { %>
+                      <img src="https://image.flaticon.com/icons/svg/25/25297.svg">
+                    <% } else if (review.score === -1) { %>
+                      <img src="https://image.flaticon.com/icons/svg/25/25237.svg">
+                    <% } %>
+                    <p>
+                      <%= review.author.firstName + " " + review.author.lastName %>
+                    </p>
+                    <p class="date">
+                      <%= review.createdAt.toLocaleDateString("en-US") %>
+                    <p>
+                  </div>
+                  <p class=description><%= review.feedback %></p>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+        <div class="profile-col borderL" id='buttons'>
+          <% if (locals.currentUser && (currentUser.id === user.id)) { %>
+            <div class="profileBox" onclick="location.href='<%= userPublications %>'">
+              <h4>Tus Publicaciones</h4>
+            </div>
+            <div class="profileBox" onclick="location.href='<%= userReceivedBids %>'">
+              <h4>Ofertas Recibidas</h4>
+            </div>
+            <div class="profileBox" onclick="location.href='<%= userBids %>'">
+              <h4>Mis Ofertas</h4>
+            </div>
+            <div class="profileBox">
+              <h4>Publicaciones Finalizadas</h4>
+            </div>
+            <div class="profileBox" onclick="location.href='<%= newPublicationPath %>'">
+              <h4>Nueva Publicacion</h4>
+            </div>
+            <div class="profileBox" onclick="location.href='<%= userConcreted %>'">
+              <h5>Intercambios/Regalos Concretados</h5>
+            </div>
+          <% } else { %>
+            <div class="profileBox" onclick="location.href='<%= userPublications %>'">
+              <h4>Publicaciones de este usuario</h4>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

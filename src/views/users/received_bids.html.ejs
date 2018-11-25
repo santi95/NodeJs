@@ -1,0 +1,57 @@
+<div class="Full">
+  <div class="cardTable">
+    <h1>Ofertas recibidas</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Publicación</th>
+          <th>Usuario</th>
+          <th>Descripcion</th>
+          <th>Status</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bids.forEach (bid => { %>
+        <tr>
+          <td>
+            <% publications.forEach(publication => { %>
+            <% if (publication.id == bid.publicationId) { %>
+            <%= publication.title %>
+            <% } %>
+            <% }) %>
+          </td>
+          <td>
+            <% users.forEach(user => { %>
+              <% if (user.id == bid.bidderId) { %>
+                <a href="<%= getUserPath(user) %>">
+                  <%= user.firstName + ' ' + user.lastName %>
+                </a>
+              <% } %>
+            <% }) %>
+          </td>
+          <td>
+            <%= bid.description %>
+          </td>
+          <td>
+            <%= bid.status %>
+          </td>
+          <td>
+            <%= bid.createdAt.toLocaleDateString("en-US") %>
+          </td>
+          <td>
+            <% if (bid.status === 'open') { %>
+            <form action="<%= getAcceptBidPath(bid) %>" method="post">
+              <input type="hidden" name="_method" value="patch" />
+              <input type="submit" class="defaultButtonSmaller" value="Aceptar" />
+            </form>
+            <%} %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

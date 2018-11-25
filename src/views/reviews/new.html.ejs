@@ -1,0 +1,50 @@
+<div class="Full">
+  <div class="title">
+    <h1>Evaluación de <%= receiverUser.firstName + ' ' + receiverUser.lastName %></h1>
+  </div>
+
+  <div class="container2">
+    <div class="cardTable addForm">
+
+        <% if (locals.errors) { %>
+          <p class="errors">Debes corregir los siguientes errores antes de continuar:</p>
+          <ul>
+            <% Object.keys(errors).forEach(prop => { %>
+              <li><%= prop %>: <%= errors[prop].message %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+
+      <form action="<%= submitPath %>" method="post">
+
+        <input type="hidden" id="authorId" name="authorId" value=<%= currentUser.id %>>
+        <input type="hidden" id="receiverId" name="receiverId" value=<%= receiverUser.id %>>
+        <input type="hidden" id="publicationId" name="publicationId" value=<%= publication.id %>>
+
+        <div class="row">
+          <label for="score">
+            <span>Puntaje</span>
+            <select name="score" id="score" />
+            <option>-1</option>
+            <option>0</option>
+            <option>1</option>
+          </label>
+          <label for="feedback">
+
+            <span>Feedback</span>
+            <br>
+            <textarea placeholder = "Comenta tu experiencia con el usuario" rows="5" cols="50" type="text" name="feedback" id="feedback" ></textarea>
+            <% if (locals.errors && errors.feedback) { %>
+              <span class="error"><%= errors.feedback.message %></span>
+            <% } %>
+          </label>
+        </div>
+
+
+        <div class="actions">
+          <input class="defaultButton" type="submit" value="Enviar" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

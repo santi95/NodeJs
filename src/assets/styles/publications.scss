@@ -1,0 +1,135 @@
+
+.addForm{
+    width: 700px !important;
+}
+
+.addForm.label{
+    margin-bottom: 20px;
+}
+
+.title{
+        color: $background;
+        width: 100%;
+        display:rowinline-block;
+        a{
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+        }
+}
+
+
+.defaultButton{
+        border-radius: 5px;
+        background-color: $yellow-base;
+        color: $background;
+        font-size: 15px;
+        text-align: center;
+        vertical-align: middle;
+        height: 50px;
+        width: 100px;
+        display: inline-block;
+        text-decoration: none;
+        align-items: flex-start;
+        margin-top: 10px;
+}
+
+.defaultButton:hover{
+        background-color: $yellow-hover;
+}
+
+.defaultButtonSmaller{
+        border-radius: 5px;
+        background-color: $yellow-base;
+        color: $background;
+        font-size: 13px;
+        text-align: center;
+        height: 18px;
+        width: 60px;
+        display: inline-block;
+        text-decoration: none;
+        align-items: flex-start;
+        margin-top: 10px;
+        vertical-align: middle;
+}
+
+.defaultButtonSmaller:hover{
+        background-color: $yellow-hover;
+}
+
+.signIn{
+    label {
+      margin: 10px;
+    }
+    span{
+        min-width: 70px;
+        display: inline-grid;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+    input{
+        width: 300px;
+    }
+}
+
+#show-publication-picture {
+    margin:auto;
+    padding-right: 30px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center; /* horizontal */
+    justify-content: center; /* vertical */
+    img {
+        height: auto;
+        width: auto;
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+#index-publication-picture {
+    // padding-right: 30px;aa
+    margin:auto;
+    width: 210px;
+    height: 210px;
+    display: flex;
+    align-items: center; /* horizontal */
+    justify-content: center; /* vertical */
+    img {
+        height: auto;
+        width: auto;
+        max-width: 210px;
+        max-height: 210px;
+    }
+}
+
+.comment{
+    margin-left: 40px !important;
+    margin-top: 10px;
+}
+
+
+.line{
+    min-width: 70%;
+    border-top: solid $background 1.2px;;
+}
+
+.line50{
+    width: 50%;
+    border-top: solid $background 1.2px;
+    margin-right: auto;}
+
+.newComment{
+    textarea{
+        // border-radius: 10px;
+        width: 50%;
+        height: 80px;
+
+    }
+}
+
+.left{
+    margin-left: 0px !important;
+}

@@ -1,0 +1,32 @@
+
+<div class="Full">
+  <div class="cardTable">
+<h1>Publicaciones en las que estas interesado</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Publicación</th>
+      <th>Descripcion</th>
+      <th>Status</th>
+      <th>Fecha</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bids.forEach (bid => { %>
+      <tr>
+        <td>
+            <% publications.forEach(publication => { %>
+            <% if (publication.id == bid.publicationId) { %>
+            <%= publication.title %>
+            <% } %>
+            <% }) %>
+        </td>
+        <td><%= bid.description %></td>
+        <td><%= bid.status %></td>
+        <td> <%= bid.createdAt.toLocaleDateString("en-US") %></td>
+        <td> <a href="/users/<%=bid.receiverId%>" class="defaultButtonSmaller"> Ver perfil</a>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

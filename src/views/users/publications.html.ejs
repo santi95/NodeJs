@@ -1,0 +1,77 @@
+<div class="Full">
+  <div class="title ml-5">
+    <h1>Publicaciones de
+      <%= user.firstName %>
+    </h1>
+  </div>
+  <div class="ml-5">
+    <table class="cardTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Tipo de intercambio</th>
+          <th>Valor Estimado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% publications.forEach(publication => { %>
+        <tr>
+          <td>
+            <div id="index-publication-picture">
+              <img src="<%= getPicturePath(publication) %>" alt="" />
+            </div>
+          </td>
+          <td>
+            <%= publication.title %>
+          </td>
+          <td>
+            <% categories.forEach(category => { %>
+            <% if (category.id == publication.categoryId) { %>
+            <%= category.name %>
+            <% } %>
+            <% }) %>
+          </td>
+          <td>
+            <%= (publication.exchange_type == 'gift')? "Regalo" : "Intercambio" %>
+          </td>
+          <td>
+            <%= publication.value %>
+          </td>
+          <td>
+            <a class="defaultButtonSmaller" href="<%= getShowPath(publication) %>">Ver</a>
+            <% if (locals.currentUser) { %>
+            <% if (currentUser.id === publication.userId || currentUser.role === 'admin') { %>
+            <a class="defaultButtonSmaller" href="<%= getEditPath(publication) %>">Editar</a>
+            <form action="<%= getDestroyPath(publication) %>" method="post">
+              <input type="hidden" name="_method" value="delete" />
+              <input class="defaultButtonSmaller" type="submit" value="Borrar" />
+            </form>
+            <% } if (currentUser.id !== publication.userId || currentUser.role === 'admin') { %>
+            <a class="defaultButtonSmaller" href="<%= newBidPath(publication) %>">Ofertar</a>
+            <% } %>
+            <% } %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+
+    </table>
+    <!-- <% if (locals.currentUser) { %>
+    <div class="cardTable corto">
+      <a href="<%= newPublicationPath %>">
+        <button class="defaultButton" href=>Nueva Publicacion </button>
+      </a>
+    </div>
+    <% } %> -->
+    <!-- <div class="cardTable corto">
+        <p>Viendo
+          <%= publications.length %> publicaciones</p>
+        <p>
+    </div> -->
+
+  </div>
+</div>
